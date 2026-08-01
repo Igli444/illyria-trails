@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="komaniSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cfe6e0"/>
+      <stop offset="100%" stop-color="#eef6ee"/>
+    </linearGradient>
+    <linearGradient id="komaniWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f8f8a"/>
+      <stop offset="100%" stop-color="#1f5a5c"/>
+    </linearGradient>
+    <linearGradient id="komaniCliffL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#48624a"/>
+      <stop offset="100%" stop-color="#324a37"/>
+    </linearGradient>
+    <linearGradient id="komaniCliffR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3d5940"/>
+      <stop offset="100%" stop-color="#2a3f2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#komaniSky)"/>
+  <path d="M0 120 L520 120 L300 520 L0 560 Z" fill="url(#komaniCliffL)"/>
+  <path d="M1600 100 L1080 100 L1320 520 L1600 560 Z" fill="url(#komaniCliffR)"/>
+  <path d="M0 560 L300 520 L500 560 L1100 560 L1320 520 L1600 560 L1600 900 L0 900 Z" fill="url(#komaniWater)"/>
+  <g stroke="#bfe3dc" stroke-opacity="0.3" stroke-width="3" fill="none">
+    <path d="M100 620 Q 500 600 900 630 T 1500 610"/>
+    <path d="M100 700 Q 500 680 900 710 T 1500 690"/>
+  </g>
+  <g>
+    <rect x="740" y="640" width="120" height="34" rx="4" fill="#e8e2d0"/>
+    <rect x="770" y="614" width="60" height="26" rx="3" fill="#c94f3c"/>
+    <rect x="795" y="596" width="8" height="20" fill="#5c5a52"/>
+  </g>
+</svg>

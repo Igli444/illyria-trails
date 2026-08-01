@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rivieraSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfe9f0"/>
+      <stop offset="100%" stop-color="#eaf7f5"/>
+    </linearGradient>
+    <linearGradient id="rivieraSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1fa0a8"/>
+      <stop offset="45%" stop-color="#0d7f92"/>
+      <stop offset="100%" stop-color="#0a5570"/>
+    </linearGradient>
+    <linearGradient id="rivieraCliffL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9b89a"/>
+      <stop offset="100%" stop-color="#a9976f"/>
+    </linearGradient>
+    <linearGradient id="rivieraCliffR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a9976f"/>
+      <stop offset="100%" stop-color="#8a7a56"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#rivieraSky)"/>
+  <path d="M0 380 L0 220 L260 340 L420 200 L560 320 L520 420 L0 420 Z" fill="url(#rivieraCliffL)"/>
+  <path d="M1600 400 L1600 180 L1340 320 L1180 210 L1060 340 L1120 460 L1600 460 Z" fill="url(#rivieraCliffR)"/>
+  <rect y="420" width="1600" height="480" fill="url(#rivieraSea)"/>
+  <g fill="#eaf7f5" opacity="0.55">
+    <ellipse cx="420" cy="470" rx="80" ry="8"/>
+    <ellipse cx="1080" cy="500" rx="100" ry="9"/>
+    <ellipse cx="760" cy="530" rx="70" ry="7"/>
+  </g>
+  <g opacity="0.9">
+    <path d="M700 620 L740 600 L790 615 L780 640 L710 645 Z" fill="#f4ede0"/>
+    <path d="M780 610 L800 598 L806 612 Z" fill="#d6432f"/>
+  </g>
+  <g fill="#f4ede0" opacity="0.85">
+    <rect x="60" y="700" width="46" height="34" rx="2"/>
+    <rect x="120" y="680" width="40" height="54" rx="2"/>
+    <rect x="1420" y="710" width="44" height="30" rx="2"/>
+    <rect x="1480" y="690" width="38" height="50" rx="2"/>
+  </g>
+</svg>

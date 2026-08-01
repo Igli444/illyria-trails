@@ -1,0 +1,15 @@
+import type { MetadataRoute } from "next";
+import { SITE_DOMAIN } from "@/data/site-settings";
+
+const siteUrl = `https://${SITE_DOMAIN}`;
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/"],
+    },
+    sitemap: `${siteUrl}/sitemap.xml`,
+  };
+}

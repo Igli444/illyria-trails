@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="butrintSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cfe8da"/>
+      <stop offset="100%" stop-color="#f0f6ea"/>
+    </linearGradient>
+    <linearGradient id="butrintLagoon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f8f92"/>
+      <stop offset="100%" stop-color="#256b70"/>
+    </linearGradient>
+    <linearGradient id="butrintFoliage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6f9a5e"/>
+      <stop offset="100%" stop-color="#4c7442"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#butrintSky)"/>
+  <rect y="480" width="1600" height="420" fill="url(#butrintLagoon)"/>
+  <path d="M0 500 Q 400 440 800 490 Q 1200 540 1600 470 L1600 560 L0 560 Z" fill="url(#butrintFoliage)"/>
+  <g fill="#e7e2d2" stroke="#c7c2ac" stroke-width="2">
+    <rect x="500" y="380" width="26" height="140"/>
+    <rect x="560" y="360" width="26" height="160"/>
+    <rect x="620" y="390" width="26" height="130"/>
+    <rect x="700" y="350" width="26" height="170"/>
+    <rect x="760" y="400" width="26" height="120"/>
+    <rect x="840" y="370" width="26" height="150"/>
+  </g>
+  <path d="M480 520 L900 520 L880 480 L500 480 Z" fill="#d3cdb8"/>
+  <g fill="#c7c2ac" opacity="0.8">
+    <circle cx="560" cy="560" r="30"/>
+    <circle cx="650" cy="570" r="24"/>
+    <circle cx="740" cy="555" r="34"/>
+  </g>
+</svg>

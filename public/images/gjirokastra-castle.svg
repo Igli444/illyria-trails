@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gjiroSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cbd6d0"/>
+      <stop offset="100%" stop-color="#eef1e9"/>
+    </linearGradient>
+    <linearGradient id="gjiroHill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8f9285"/>
+      <stop offset="100%" stop-color="#6b6e5f"/>
+    </linearGradient>
+    <linearGradient id="gjiroCastle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c5a52"/>
+      <stop offset="100%" stop-color="#3a3931"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#gjiroSky)"/>
+  <path d="M0 560 Q 500 420 900 480 Q 1200 520 1600 440 L1600 700 L0 700 Z" fill="url(#gjiroHill)"/>
+  <g fill="url(#gjiroCastle)">
+    <rect x="620" y="300" width="360" height="140"/>
+    <rect x="600" y="260" width="50" height="180"/>
+    <rect x="950" y="240" width="56" height="200"/>
+    <rect x="760" y="220" width="60" height="220"/>
+  </g>
+  <g fill="#3a3931">
+    <polygon points="600,260 625,232 650,260"/>
+    <polygon points="950,240 978,210 1006,240"/>
+    <polygon points="760,220 790,190 820,220"/>
+  </g>
+  <g fill="#26251f">
+    <rect x="640" y="340" width="18" height="26"/>
+    <rect x="680" y="340" width="18" height="26"/>
+    <rect x="720" y="340" width="18" height="26"/>
+    <rect x="860" y="340" width="18" height="26"/>
+    <rect x="900" y="340" width="18" height="26"/>
+  </g>
+  <g fill="#d8d3c2" stroke="#b7b09a" stroke-width="1.5">
+    <rect x="200" y="560" width="54" height="66"/>
+    <rect x="264" y="540" width="50" height="86"/>
+    <rect x="326" y="570" width="52" height="56"/>
+    <rect x="1100" y="560" width="54" height="66"/>
+    <rect x="1164" y="540" width="50" height="86"/>
+    <rect x="1226" y="570" width="52" height="56"/>
+  </g>
+  <g fill="#8f8770" opacity="0.7">
+    <polygon points="200,560 227,538 254,560"/>
+    <polygon points="264,540 289,516 314,540"/>
+    <polygon points="326,570 352,548 378,570"/>
+    <polygon points="1100,560 1127,538 1154,560"/>
+    <polygon points="1164,540 1189,516 1214,540"/>
+    <polygon points="1226,570 1252,548 1278,570"/>
+  </g>
+</svg>

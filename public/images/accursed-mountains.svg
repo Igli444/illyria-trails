@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="peaksSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dcebf2"/>
+      <stop offset="100%" stop-color="#f3f6ee"/>
+    </linearGradient>
+    <linearGradient id="peaksFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9aa9ac"/>
+      <stop offset="100%" stop-color="#c3cdc6"/>
+    </linearGradient>
+    <linearGradient id="peaksMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c7a5f"/>
+      <stop offset="100%" stop-color="#3f5c43"/>
+    </linearGradient>
+    <linearGradient id="valleyFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6f9a5e"/>
+      <stop offset="100%" stop-color="#4c7442"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#peaksSky)"/>
+  <path d="M0 420 L220 200 L360 340 L520 160 L700 360 L880 190 L1060 350 L1260 170 L1440 340 L1600 240 L1600 500 L0 500 Z" fill="url(#peaksFar)"/>
+  <g fill="#f6f9fb" opacity="0.9">
+    <path d="M340 250 L360 220 L385 245 Z"/>
+    <path d="M840 220 L870 195 L895 218 Z"/>
+    <path d="M1240 205 L1265 178 L1290 202 Z"/>
+  </g>
+  <path d="M0 520 L260 400 L500 520 L760 380 L1000 520 L1260 410 L1600 520 L1600 640 L0 640 Z" fill="url(#peaksMid)"/>
+  <path d="M0 640 L1600 640 L1600 900 L0 900 Z" fill="url(#valleyFloor)"/>
+  <g fill="#e8e2d0" opacity="0.9">
+    <rect x="620" y="700" width="42" height="30" rx="2"/>
+    <polygon points="614,700 641,678 668,700"/>
+    <rect x="700" y="720" width="36" height="26" rx="2"/>
+    <polygon points="695,720 718,700 741,720"/>
+  </g>
+</svg>

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf8f3;
+  --foreground: #0d1524;
+
+  --color-ink: #0d1524;
+  --color-ink-soft: #4b5568;
+  --color-paper: #faf8f3;
+  --color-paper-dim: #f1ede3;
+  --color-line: #e3ddcf;
+
+  --color-fjord-50: #eef7f6;
+  --color-fjord-100: #d3ebe8;
+  --color-fjord-500: #0f6e6b;
+  --color-fjord-600: #0b5654;
+  --color-fjord-900: #0a2e2c;
+
+  --color-amber: #e0913c;
+  --color-amber-dark: #b8721f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-line: var(--color-line);
+
+  --color-fjord-50: var(--color-fjord-50);
+  --color-fjord-100: var(--color-fjord-100);
+  --color-fjord-500: var(--color-fjord-500);
+  --color-fjord-600: var(--color-fjord-600);
+  --color-fjord-900: var(--color-fjord-900);
+
+  --color-amber: var(--color-amber);
+  --color-amber-dark: var(--color-amber-dark);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
