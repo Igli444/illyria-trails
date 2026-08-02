@@ -11,8 +11,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/tours" },
 };
 
-export default async function ToursPage() {
-  const [tours, categories] = await Promise.all([getAllTours(), getAllCategories()]);
+interface PageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function ToursPage({ searchParams }: PageProps) {
+  const [tours, categories, { q }] = await Promise.all([getAllTours(), getAllCategories(), searchParams]);
 
   return (
     <>
@@ -25,7 +29,7 @@ export default async function ToursPage() {
           difficulty to find the right pace for your trip.
         </p>
         <div className="mt-8">
-          <ToursExplorer tours={tours} categories={categories} />
+          <ToursExplorer tours={tours} categories={categories} initialQuery={q ?? ""} />
         </div>
       </div>
     </>

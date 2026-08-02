@@ -17,7 +17,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {settings.footerColumns.map((col) => (
               <div key={col.title}>
                 <h3 className="text-sm font-semibold text-paper">{col.title}</h3>

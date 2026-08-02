@@ -1,16 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Tour } from "@/types/content";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/CurrencyProvider";
+import { useCart } from "@/components/CartProvider";
 import type { AvailabilityResponse } from "@/app/api/availability/route";
 
 export function BookingWidget({ tour }: { tour: Tour }) {
+  const { display } = useCurrency();
+  const { addItem } = useCart();
   const [date, setDate] = useState("");
   const [travelers, setTravelers] = useState(2);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AvailabilityResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [added, setAdded] = useState(false);
 
   async function checkAvailability(e: React.FormEvent) {
     e.preventDefault();
@@ -21,6 +26,7 @@ export function BookingWidget({ tour }: { tour: Tour }) {
     setError(null);
     setLoading(true);
     setResult(null);
+    setAdded(false);
     try {
       const res = await fetch("/api/availability", {
         method: "POST",
@@ -37,15 +43,26 @@ export function BookingWidget({ tour }: { tour: Tour }) {
     }
   }
 
+  function handleAddToCart() {
+    addItem({
+      type: "tour",
+      slug: tour.slug,
+      title: tour.title,
+      date,
+      travelers,
+      unitPriceEur: tour.price,
+      meta: tour.duration,
+    });
+    setAdded(true);
+  }
+
   return (
     <div className="sticky top-24 rounded-2xl border border-line bg-white p-5 shadow-sm">
       <div className="flex items-baseline gap-2">
         {tour.originalPrice && (
-          <span className="text-sm text-ink-soft line-through">{formatPrice(tour.originalPrice, tour.currency)}</span>
+          <span className="text-sm text-ink-soft line-through">{display(tour.originalPrice)}</span>
         )}
-        <span className="font-display text-2xl font-semibold text-fjord-600">
-          {formatPrice(tour.price, tour.currency)}
-        </span>
+        <span className="font-display text-2xl font-semibold text-fjord-600">{display(tour.price)}</span>
         <span className="text-sm text-ink-soft">/ person</span>
       </div>
 
@@ -96,8 +113,24 @@ export function BookingWidget({ tour }: { tour: Tour }) {
               </p>
               <p className="mt-1 text-ink-soft">
                 Total for {travelers} traveler{travelers === 1 ? "" : "s"}:{" "}
-                <span className="font-semibold text-ink">{formatPrice(result.totalPrice, result.currency)}</span>
+                <span className="font-semibold text-ink">{display(result.totalPrice)}</span>
               </p>
+              {added ? (
+                <p className="mt-3 flex items-center justify-between rounded-lg bg-fjord-50 px-3 py-2 text-sm font-medium text-fjord-600">
+                  Added to cart
+                  <Link href="/cart" className="underline hover:no-underline">
+                    View cart &rarr;
+                  </Link>
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className="mt-3 w-full rounded-lg border border-fjord-500 px-4 py-2.5 text-sm font-semibold text-fjord-600 hover:bg-fjord-50"
+                >
+                  Add to Cart
+                </button>
+              )}
             </>
           ) : (
             <p className="font-medium text-amber-dark">

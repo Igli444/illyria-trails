@@ -1,0 +1,21 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="waterfallForest" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2f5a3a"/>
+      <stop offset="100%" stop-color="#1c3a24"/>
+    </linearGradient>
+    <linearGradient id="waterfallFlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf6f8"/>
+      <stop offset="100%" stop-color="#9fd6e0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#waterfallForest)"/>
+  <path d="M600 0 L1000 0 L960 620 Q 980 700 1040 720 L940 900 L660 900 L560 720 Q 620 700 640 620 Z" fill="url(#waterfallFlow)" opacity="0.92"/>
+  <g fill="#eaf6f8" opacity="0.5">
+    <ellipse cx="800" cy="740" rx="260" ry="60"/>
+  </g>
+  <g fill="#264a30">
+    <path d="M0 260 Q 260 180 560 260 L560 900 L0 900 Z"/>
+    <path d="M1600 260 Q 1340 180 1040 260 L1040 900 L1600 900 Z"/>
+  </g>
+</svg>

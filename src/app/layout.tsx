@@ -3,7 +3,11 @@ import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { getAllCategories } from "@/data/categories";
+import { CurrencyProvider } from "@/components/CurrencyProvider";
+import { CartProvider } from "@/components/CartProvider";
+import { getAllCategories, getAllSubCategories } from "@/data/categories";
+import { getAllTours } from "@/data/tours";
+import { getLatestGuides } from "@/data/guides";
 import { getSiteSettings, SITE_DOMAIN } from "@/data/site-settings";
 
 const geistSans = Geist({
@@ -54,7 +58,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [settings, categories] = await Promise.all([getSiteSettings(), getAllCategories()]);
+  const [settings, categories, subCategories, tours, guides] = await Promise.all([
+    getSiteSettings(),
+    getAllCategories(),
+    getAllSubCategories(),
+    getAllTours(),
+    getLatestGuides(4),
+  ]);
 
   return (
     <html
@@ -65,11 +75,21 @@ export default async function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <SiteHeader brandName={settings.brandName} categories={categories} />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter settings={settings} />
+        <CurrencyProvider>
+          <CartProvider>
+            <SiteHeader
+              brandName={settings.brandName}
+              categories={categories}
+              subCategories={subCategories}
+              tours={tours}
+              guides={guides}
+            />
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter settings={settings} />
+          </CartProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );

@@ -1,0 +1,21 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="parkSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfe0d4"/>
+      <stop offset="100%" stop-color="#e8f2e0"/>
+    </linearGradient>
+    <linearGradient id="parkHill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b8a5e"/>
+      <stop offset="100%" stop-color="#3a6640"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#parkSky)"/>
+  <path d="M0 500 Q 300 380 620 480 Q 900 400 1200 500 Q 1420 440 1600 520 L1600 900 L0 900 Z" fill="url(#parkHill)"/>
+  <path d="M0 620 Q 260 560 520 620 Q 800 570 1080 630 Q 1360 580 1600 640 L1600 900 L0 900 Z" fill="#2c4f32"/>
+  <g fill="#3a6640">
+    <circle cx="300" cy="440" r="60"/>
+    <circle cx="360" cy="460" r="45"/>
+    <circle cx="1220" cy="460" r="55"/>
+    <circle cx="1280" cy="480" r="40"/>
+  </g>
+</svg>

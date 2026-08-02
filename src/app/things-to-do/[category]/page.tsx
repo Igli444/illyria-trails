@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ParallaxImage } from "@/components/ParallaxImage";
 import { TourCard } from "@/components/TourCard";
 import { getAllCategories, getCategoryBySlug, getSubCategoriesForParent } from "@/data/categories";
 import { getToursByCategory } from "@/data/tours";
@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: PageProps) {
       <Breadcrumbs items={[{ name: "Things to Do", url: "/tours" }, { name: category.title, url: `/things-to-do/${category.slug}` }]} />
 
       <div className="relative h-72 w-full overflow-hidden sm:h-96">
-        <Image src={category.heroImage.src} alt={category.heroImage.alt} fill priority sizes="100vw" className="object-cover" />
+        <ParallaxImage src={category.heroImage.src} alt={category.heroImage.alt} priority />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
           <h1 className="font-display text-3xl font-semibold text-paper sm:text-4xl">{category.title}</h1>

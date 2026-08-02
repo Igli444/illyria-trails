@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookingWidget } from "@/components/BookingWidget";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { JsonLd } from "@/components/JsonLd";
+import { ParallaxImage } from "@/components/ParallaxImage";
 import { TourCard } from "@/components/TourCard";
 import { getCategoryBySlug } from "@/data/categories";
 import { getAllTours, getRelatedTours, getTourBySlug } from "@/data/tours";
@@ -62,7 +63,7 @@ export default async function TourDetailPage({ params }: PageProps) {
       <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-4 sm:grid-rows-2">
           <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:col-span-2 sm:row-span-2 sm:aspect-auto">
-            <Image src={tour.heroImage.src} alt={tour.heroImage.alt} fill priority sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
+            <ParallaxImage src={tour.heroImage.src} alt={tour.heroImage.alt} priority sizes="(min-width: 640px) 50vw, 100vw" />
           </div>
           {tour.gallery.slice(0, 2).map((img, i) => (
             <div key={i} className="relative hidden aspect-[16/10] overflow-hidden rounded-2xl sm:block">

@@ -28,6 +28,8 @@ export const siteSettings: SiteSettings = {
       title: "Explore",
       links: [
         { label: "All Tours", href: "/tours" },
+        { label: "Attractions", href: "/attractions" },
+        { label: "Airport Transfer", href: "/airport-transfer" },
         { label: "Albanian Riviera", href: "/things-to-do/albanian-riviera" },
         { label: "Accursed Mountains", href: "/things-to-do/accursed-mountains" },
         { label: "Historic Old Towns", href: "/things-to-do/historic-old-towns" },
@@ -43,20 +45,30 @@ export const siteSettings: SiteSettings = {
       ],
     },
     {
-      title: "Company",
+      title: "Good to Know",
       links: [
-        { label: "About Us", href: "/about" },
-        { label: "Careers", href: "/careers" },
+        { label: "Difficulty Levels", href: "/difficulty-levels" },
+        { label: "Traveling with Children", href: "/traveling-with-children" },
+        { label: "Meeting Points", href: "/meeting-points" },
         { label: "Live Tour Status", href: "/tour-status" },
       ],
     },
     {
-      title: "Support",
+      title: "Company",
+      links: [
+        { label: "About Us", href: "/about" },
+        { label: "Careers", href: "/careers" },
+      ],
+    },
+    {
+      title: "Support & Legal",
       links: [
         { label: "Customer Support & FAQ", href: "/customer-support-and-faq" },
         { label: "Terms & Conditions", href: "/terms-and-conditions" },
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Cookie Policy", href: "/cookies" },
+        { label: "Environmental Policy", href: "/environmental-policy" },
+        { label: "Equal Pay Policy", href: "/equal-pay-policy" },
       ],
     },
   ],

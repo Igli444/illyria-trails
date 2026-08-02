@@ -71,6 +71,17 @@ export interface Tour {
   seo: SeoFields;
 }
 
+export interface Attraction {
+  slug: string;
+  title: string;
+  category: string;
+  region: string;
+  coordinates: { lat: number; lng: number };
+  description: string;
+  image: ContentImage;
+  relatedTourSlugs: string[];
+}
+
 export interface FooterLinkColumn {
   title: string;
   links: { label: string; href: string }[];

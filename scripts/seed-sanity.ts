@@ -18,6 +18,7 @@ import { createClient } from "next-sanity";
 import { categories, subCategories } from "./seed-data/categories";
 import { tours } from "./seed-data/tours";
 import { guides } from "./seed-data/guides";
+import { attractions } from "./seed-data/attractions";
 import { siteSettings } from "./seed-data/site-settings";
 import type { ContentImage } from "../src/types/content";
 
@@ -192,6 +193,24 @@ async function run() {
       seo: guide.seo,
     });
     console.log(`  guide: ${guide.title} -> ${id}`);
+  }
+
+  console.log("Seeding attractions...");
+  for (const attraction of attractions) {
+    const id = await upsertBySlug("attraction", attraction.slug, {
+      title: attraction.title,
+      slug: { _type: "slug", current: attraction.slug },
+      category: attraction.category,
+      region: attraction.region,
+      coordinates: attraction.coordinates,
+      description: attraction.description,
+      image: await uploadImage(attraction.image),
+      relatedTours: attraction.relatedTourSlugs
+        .map((slug) => tourIdBySlug.get(slug))
+        .filter((tourId): tourId is string => Boolean(tourId))
+        .map((tourId) => ({ _type: "reference", _ref: tourId, _key: randomKey() })),
+    });
+    console.log(`  attraction: ${attraction.title} -> ${id}`);
   }
 
   console.log("Seeding site settings singleton...");

@@ -1,0 +1,19 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="caveMouth" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="70%" stop-color="#171512"/>
+      <stop offset="100%" stop-color="#2c2620"/>
+    </radialGradient>
+    <linearGradient id="caveRock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b5d4c"/>
+      <stop offset="100%" stop-color="#463b2f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#caveRock)"/>
+  <path d="M800 120 Q 1150 220 1180 560 Q 1150 780 800 830 Q 450 780 420 560 Q 450 220 800 120 Z" fill="url(#caveMouth)"/>
+  <g fill="#8f7f68" opacity="0.6">
+    <path d="M0 780 Q 200 700 380 780 L0 900 Z"/>
+    <path d="M1600 780 Q 1400 700 1220 780 L1600 900 Z"/>
+  </g>
+</svg>

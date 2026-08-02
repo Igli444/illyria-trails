@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Tour } from "@/types/content";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export function TourCard({ tour, priority = false }: { tour: Tour; priority?: boolean }) {
+  const { display } = useCurrency();
+  const percentOff = tour.originalPrice ? Math.round((1 - tour.price / tour.originalPrice) * 100) : 0;
   return (
     <Link
       href={`/tours/${tour.slug}`}
@@ -40,12 +44,15 @@ export function TourCard({ tour, priority = false }: { tour: Tour; priority?: bo
         <div className="mt-3 flex items-end justify-between pt-2">
           <div>
             {tour.originalPrice && (
-              <span className="mr-1.5 text-xs text-ink-soft line-through">
-                {formatPrice(tour.originalPrice, tour.currency)}
+              <span className="mr-1.5 text-xs text-ink-soft line-through">{display(tour.originalPrice)}</span>
+            )}
+            <span className="text-lg font-semibold text-fjord-600">{display(tour.price)}</span>
+            <span className="text-xs text-ink-soft"> / person</span>
+            {percentOff > 0 && (
+              <span className="ml-2 rounded-full bg-fjord-50 px-2 py-0.5 text-[11px] font-semibold text-fjord-600">
+                SAVE {percentOff}%
               </span>
             )}
-            <span className="text-lg font-semibold text-fjord-600">{formatPrice(tour.price, tour.currency)}</span>
-            <span className="text-xs text-ink-soft"> / person</span>
           </div>
         </div>
       </div>

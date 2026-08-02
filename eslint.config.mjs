@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // studio/ is a separate nested project with its own eslint config and
+    // lint script — not part of this app's lint scope.
+    "studio/**",
   ]),
 ]);
 

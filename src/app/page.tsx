@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { CategoryCard } from "@/components/CategoryCard";
 import { GuideCard } from "@/components/GuideCard";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { ParallaxImage } from "@/components/ParallaxImage";
 import { SearchWidget } from "@/components/SearchWidget";
 import { TourCard } from "@/components/TourCard";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -32,13 +32,10 @@ export default async function Home() {
       <JsonLd data={localBusinessSchema(settings)} />
 
       <section className="relative flex min-h-[640px] items-center overflow-hidden">
-        <Image
+        <ParallaxImage
           src="/images/accursed-mountains.svg"
           alt="Jagged alpine peaks above a green valley in Albania's Accursed Mountains"
-          fill
           priority
-          sizes="100vw"
-          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-ink/10" />
         <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import { ParallaxImage } from "@/components/ParallaxImage";
 import { TourCard } from "@/components/TourCard";
 import { getAllGuides, getGuideBySlug } from "@/data/guides";
 import { getAllTours } from "@/data/tours";
@@ -66,7 +66,7 @@ export default async function GuideArticlePage({ params }: PageProps) {
         </div>
 
         <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-2xl">
-          <Image src={guide.coverImage.src} alt={guide.coverImage.alt} fill priority sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
+          <ParallaxImage src={guide.coverImage.src} alt={guide.coverImage.alt} priority sizes="(min-width: 768px) 768px, 100vw" />
         </div>
 
         <div className="prose-content mt-8 space-y-5 text-base leading-relaxed text-ink-soft">
