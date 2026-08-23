@@ -1,4 +1,5 @@
 import type { SiteSettings, Tour } from "@/types/content";
+import { formatPrice } from "@/lib/utils";
 
 /**
  * Rule-based support assistant: answers are drawn only from this site's own
@@ -138,11 +139,44 @@ export interface ChatbotContext {
 }
 
 const GREETING_RE = /^\s*(hi|hello|hey|good\s?(morning|afternoon|evening)|yo)\b/i;
-const CONTACT_RE = /\b(email|e-?mail|contact|reach|address)\b/i;
-const PHONE_RE = /\b(phone|call|number)\b/i;
-const HOURS_RE = /\b(hours?|open|closed|available)\b/i;
+// Narrowed to phrasing that's actually asking *for* our contact details —
+// bare words like "reach" or "call" or "number" show up in all kinds of
+// unrelated questions ("how do I reach Theth?", "what number of people?")
+// and were swallowing real questions into a contact-info deflection.
+const CONTACT_RE = /\b(email address|e-?mail address|your email|contact (us|you|info|details)|customer service)\b/i;
+const PHONE_RE = /\b(phone( number)?|telephone|call (us|you))\b/i;
+const HOURS_RE = /\b(support hours|opening hours|what (time|hours)|when are you open|are you open)\b/i;
 const TOUR_LIST_RE = /\btours?\b/i;
 const TOUR_LIST_INTENT_RE = /\b(what|which|list|offer|options|available|see|show)\b/i;
+
+// Words too generic to identify a specific tour on their own (every title
+// has some of these); the place names and activity words that remain after
+// filtering them out are what actually distinguish one tour from another.
+const GENERIC_TOUR_WORDS = new Set(["tour", "tours", "day", "days", "trip", "hour", "hours"]);
+
+function findMatchingTour(messageTokens: string[], tours: Tour[]): Tour | null {
+  let best: { tour: Tour; score: number } | null = null;
+  for (const tour of tours) {
+    const titleTokens = dedupeStems(tokenize(tour.title)).filter((t) => !GENERIC_TOUR_WORDS.has(t));
+    if (titleTokens.length === 0) continue;
+    let score = 0;
+    for (const mt of messageTokens) {
+      if (titleTokens.some((tt) => sameStem(mt, tt))) score += 1;
+    }
+    if (score > 0 && (!best || score > best.score)) {
+      best = { tour, score };
+    }
+  }
+  return best?.tour ?? null;
+}
+
+function formatTourReply(tour: Tour): string {
+  const price = formatPrice(tour.price, tour.currency);
+  const priceLine = tour.originalPrice
+    ? `${price} per person (was ${formatPrice(tour.originalPrice, tour.currency)})`
+    : `${price} per person`;
+  return `${tour.title} — ${tour.duration}, ${tour.difficulty} difficulty, ${priceLine}.\n${tour.shortDescription}\nSee the tour page for the full itinerary, meeting point, and availability.`;
+}
 
 function contactLine(settings: SiteSettings): string {
   return `Email us at ${settings.supportEmail}${
@@ -170,12 +204,21 @@ export function answerSupportQuestion(message: string, context: ChatbotContext):
     return `Our support hours are ${settings.supportHours}.`;
   }
 
+  const messageTokens = dedupeStems(tokenize(trimmed));
+
+  // A message naming a specific tour ("tell me about the Blue Eye tour",
+  // "how much is the Komani ferry?") should answer about that tour, even
+  // though it also matches the generic "list tours" intent below.
+  const matchedTour = findMatchingTour(messageTokens, tours);
+  if (matchedTour) {
+    return formatTourReply(matchedTour);
+  }
+
   if (TOUR_LIST_RE.test(trimmed) && TOUR_LIST_INTENT_RE.test(trimmed) && tours.length > 0) {
     const names = tours.slice(0, 6).map((t) => `• ${t.title} (${t.duration})`).join("\n");
     return `Here are some of our tours:\n${names}\n\nSee the full list on our Tours page, or ask about a specific one.`;
   }
 
-  const messageTokens = dedupeStems(tokenize(trimmed));
   const items: IndexedFaqItem[] = settings.faqCategories.flatMap((category) =>
     category.items.map((item) => {
       const questionTokens = tokenize(item.question);
