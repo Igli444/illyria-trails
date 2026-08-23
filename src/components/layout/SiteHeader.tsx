@@ -162,23 +162,43 @@ export function SiteHeader({
 
         <div className="hidden border-b border-line lg:block">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-            <Link
-              href="/my-booking"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
-              aria-hidden={curtainOpen}
-              tabIndex={curtainOpen ? -1 : undefined}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M20 8a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2a2 2 0 0 1 0 4v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-4z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              My Booking
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/my-booking"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
+                aria-hidden={curtainOpen}
+                tabIndex={curtainOpen ? -1 : undefined}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20 8a2 2 0 0 0 2-2V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2a2 2 0 0 1 0 4v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-4z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                My Booking
+              </Link>
+              <Link
+                href="/customer-support-and-faq"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
+                aria-hidden={curtainOpen}
+                tabIndex={curtainOpen ? -1 : undefined}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.85.503 3.583 1.379 5.07L2.5 21.5l4.43-.879A9.955 9.955 0 0 0 12 22z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                  <path d="M9 10h.01M12 10h.01M15 10h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                Customer Support &amp; FAQ
+              </Link>
+            </div>
             <CurrencySelector hidden={curtainOpen} />
           </div>
         </div>

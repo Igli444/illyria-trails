@@ -27,7 +27,10 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                   height="16"
                   viewBox="0 0 16 16"
                   aria-hidden="true"
-                  className={cn("shrink-0 text-ink-soft transition-transform", open && "rotate-45")}
+                  className={cn(
+                    "shrink-0 text-ink-soft transition-transform duration-[220ms] ease-[cubic-bezier(0.65,0,0.35,1)]",
+                    open && "rotate-45"
+                  )}
                 >
                   <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>

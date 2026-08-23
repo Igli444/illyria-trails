@@ -18,6 +18,11 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface FaqCategory {
+  title: string;
+  items: FaqItem[];
+}
+
 export interface SeoFields {
   metaTitle: string;
   metaDescription: string;
@@ -98,4 +103,14 @@ export interface SiteSettings {
   certifications: string[];
   trustBadges: { label: string; rating: number; reviewCount: number }[];
   footerColumns: FooterLinkColumn[];
+  supportHours: string;
+  supportAddress: string;
+  faqCategories: FaqCategory[];
+}
+
+export type ChatRole = "user" | "assistant";
+
+export interface ChatMessage {
+  role: ChatRole;
+  content: string;
 }

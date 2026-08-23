@@ -222,11 +222,16 @@ async function run() {
     description: siteSettings.description,
     supportEmail: siteSettings.supportEmail,
     supportPhone: siteSettings.supportPhone,
+    supportHours: siteSettings.supportHours,
+    supportAddress: siteSettings.supportAddress,
     certifications: siteSettings.certifications,
     trustBadges: withKeys(siteSettings.trustBadges),
     socials: withKeys(siteSettings.socials),
     footerColumns: withKeys(
       siteSettings.footerColumns.map((col) => ({ ...col, links: withKeys(col.links) })),
+    ),
+    faqCategories: withKeys(
+      siteSettings.faqCategories.map((c) => ({ ...c, items: withKeys(c.items) })),
     ),
   });
 

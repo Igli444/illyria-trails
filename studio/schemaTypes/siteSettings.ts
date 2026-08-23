@@ -14,6 +14,39 @@ export const siteSettings = defineType({
     defineField({ name: "description", title: "Site Description", type: "text", rows: 2 }),
     defineField({ name: "supportEmail", title: "Support Email", type: "string", validation: (rule) => rule.email() }),
     defineField({ name: "supportPhone", title: "Support Phone", type: "string" }),
+    defineField({ name: "supportHours", title: "Support Hours", type: "string" }),
+    defineField({ name: "supportAddress", title: "Support Address", type: "string" }),
+    defineField({
+      name: "faqCategories",
+      title: "FAQ Categories",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "faqCategory",
+          fields: [
+            defineField({ name: "title", title: "Category Title", type: "string" }),
+            defineField({
+              name: "items",
+              title: "Items",
+              type: "array",
+              of: [
+                defineArrayMember({
+                  type: "object",
+                  name: "faqItem",
+                  fields: [
+                    defineField({ name: "question", title: "Question", type: "string" }),
+                    defineField({ name: "answer", title: "Answer", type: "text" }),
+                  ],
+                  preview: { select: { title: "question" } },
+                }),
+              ],
+            }),
+          ],
+          preview: { select: { title: "title" } },
+        }),
+      ],
+    }),
     defineField({
       name: "footerColumns",
       title: "Footer Columns",
