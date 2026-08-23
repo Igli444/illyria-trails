@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
-import { imageProjection, seoProjection } from "@/sanity/lib/fragments";
+import { imageProjection, seoProjection, withSeoFallback } from "@/sanity/lib/fragments";
 import { portableTextToParagraphs } from "@/sanity/lib/portableText";
 import { Tour } from "@/types/content";
 
@@ -81,7 +81,7 @@ function toTour(raw: RawTour): Tour {
     excluded: raw.excluded ?? [],
     whatToBring: raw.whatToBring ?? [],
     faqs: raw.faqs ?? [],
-    seo: raw.seo,
+    seo: withSeoFallback(raw.seo, raw.title, raw.shortDescription),
   };
 }
 

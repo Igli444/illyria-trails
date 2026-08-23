@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
-import { imageProjection, seoProjection } from "@/sanity/lib/fragments";
+import { imageProjection, seoProjection, withSeoFallback } from "@/sanity/lib/fragments";
 import { portableTextToParagraphs } from "@/sanity/lib/portableText";
 import { Guide } from "@/types/content";
 
@@ -45,7 +45,7 @@ function toGuide(raw: RawGuide): Guide {
     tags: raw.tags ?? [],
     relatedTourSlugs: (raw.relatedTourSlugs ?? []).filter(Boolean),
     body: portableTextToParagraphs(raw.body),
-    seo: raw.seo,
+    seo: withSeoFallback(raw.seo, raw.title, raw.excerpt),
   };
 }
 

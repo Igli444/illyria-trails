@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
-import { imageProjection, seoProjection } from "@/sanity/lib/fragments";
+import { imageProjection, seoProjection, withSeoFallback } from "@/sanity/lib/fragments";
 import { portableTextToParagraphs } from "@/sanity/lib/portableText";
 import { Category } from "@/types/content";
 
@@ -50,7 +50,7 @@ function toCategory(raw: RawCategory): Category {
     introCopy: portableTextToParagraphs(raw.introCopy),
     heroImage: raw.heroImage,
     keywords: raw.keywords ?? [],
-    seo: raw.seo,
+    seo: withSeoFallback(raw.seo, raw.title, raw.shortDescription),
   };
 }
 
