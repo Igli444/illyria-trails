@@ -107,10 +107,3 @@ export interface SiteSettings {
   supportAddress: string;
   faqCategories: FaqCategory[];
 }
-
-export type ChatRole = "user" | "assistant";
-
-export interface ChatMessage {
-  role: ChatRole;
-  content: string;
-}

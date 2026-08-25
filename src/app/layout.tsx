@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { SupportChatWidget } from "@/components/SupportChatWidget";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { CartProvider } from "@/components/CartProvider";
 import { getAllCategories, getAllSubCategories } from "@/data/categories";
@@ -89,7 +88,6 @@ export default async function RootLayout({
               {children}
             </main>
             <SiteFooter settings={settings} />
-            <SupportChatWidget supportEmail={settings.supportEmail} />
           </CartProvider>
         </CurrencyProvider>
       </body>
