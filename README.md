@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Illyria Trails
 
-## Getting Started
+A booking platform for small-group tours across Albania — Riviera boat trips, Accursed Mountains treks, the Lake Komani ferry, Berat's old town, and airport transfers.
 
-First, run the development server:
+**Live:** [illyria-trails.vercel.app](https://illyria-trails.vercel.app)
+
+![Illyria Trails preview](.github/preview.png)
+
+## About
+
+Illyria Trails is a full tour-operator website: browsing and searching tours, checking live availability, booking and paying online, and managing an existing booking — backed by a Sanity-powered content layer so tours, categories, and travel guides can be edited without a deploy.
+
+## Features
+
+- **Tour catalog** — categories, sub-categories, "things to do", attractions, and inspiration/guide content, all editable through Sanity
+- **Search & availability** — a date/traveler-count search widget backed by an availability API
+- **Booking flow** — cart, checkout, and payment, plus a "my booking" lookup page for returning customers
+- **SEO** — structured data (JSON-LD) for organization and local-business schema, per-page metadata
+- **Multi-currency support** via a currency context provider
+- **Support & content pages** — FAQ/support requests, careers, policies (privacy, cookies, environmental, equal pay), tour status, and meeting points
+- **Form handling** with `react-hook-form` + `zod` validation throughout (search, checkout, support requests)
+- Tested with Vitest + React Testing Library
+
+## Tech stack
+
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| CMS | [Sanity](https://www.sanity.io) (`next-sanity`) |
+| Animation | Framer Motion |
+| Forms/validation | React Hook Form + Zod |
+| Testing | Vitest, React Testing Library |
+| Deployment | Vercel |
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it locally. The site reads tour/category/guide content from a Sanity project — set the relevant `NEXT_PUBLIC_SANITY_*` environment variables locally to connect your own dataset, or rely on the project's built-in fallback data for a quick preview without Sanity configured.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # lint the project
+npm run test    # run the test suite (Vitest)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+├─ app/            # Routes: tours, attractions, checkout, cart, support, policy pages, APIs
+├─ components/     # UI components (cards, forms, layout)
+├─ data/           # Content-fetching helpers (tours, categories, guides, site settings)
+├─ sanity/         # Sanity client/schema configuration
+├─ lib/            # Shared utilities (schema.org helpers, etc.)
+└─ types/          # Shared TypeScript types
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Location
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built for the Albanian tourism market — Tirana, Albania.
